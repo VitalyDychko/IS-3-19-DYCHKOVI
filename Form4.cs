@@ -23,12 +23,12 @@ namespace IS_3_19_DYCHKOVI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ConnectionToMySQL CtMSQL = new ConnectionToMySQL();
+            ConnDB conndb = new ConnDB();
             try
             {
-                CtMSQL.ConnectionDataBase().Open();
+                conndb.ConnectionDataBase().Open();
                 string ConnSTR = "SELECT idStud AS 'ID', fioStud AS 'ФИО', drStud AS 'Дата рождения' FROM t_datetime";
-                MySQLData.SelectCommand = new MySqlCommand(ConnSTR, CtMSQL.ConnectionDataBase());
+                MySQLData.SelectCommand = new MySqlCommand(ConnSTR, conndb.ConnectionDataBase());
                 MySQLData.Fill(datatable);
                 SourceBind.DataSource = datatable;
                 dataGridView1.DataSource = SourceBind;
@@ -39,8 +39,7 @@ namespace IS_3_19_DYCHKOVI
             }
             finally
             {
-                MessageBox.Show("Вы успешно подключились к базе данных!");
-                CtMSQL.ConnectionDataBase().Close();
+                conndb.ConnectionDataBase().Close();
             }
         }
 

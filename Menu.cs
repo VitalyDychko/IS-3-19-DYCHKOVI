@@ -45,5 +45,11 @@ namespace IS_3_19_DYCHKOVI
             Form4 Form4 = new Form4();
             Form4.ShowDialog();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Form5 Form5 = new Form5();
+            Form5.ShowDialog();
+        }
     }
 }
