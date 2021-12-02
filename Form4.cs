@@ -11,12 +11,12 @@ using MySql.Data.MySqlClient;
 
 namespace IS_3_19_DYCHKOVI
 {
-    public partial class Form3 : Form
+    public partial class Form4 : Form
     {
         MySqlDataAdapter MySQLData = new MySqlDataAdapter();
         BindingSource SourceBind = new BindingSource();
         DataTable datatable = new DataTable();
-        public Form3()
+        public Form4()
         {
             InitializeComponent();
         }
@@ -27,7 +27,7 @@ namespace IS_3_19_DYCHKOVI
             try
             {
                 CtMSQL.ConnectionDataBase().Open();
-                string ConnSTR = "SELECT id AS 'ID', fio AS 'ФИО', theme_kurs AS 'Тема' FROM t_stud";
+                string ConnSTR = "SELECT idStud AS 'ID', fioStud AS 'ФИО', drStud AS 'Дата рождения' FROM t_datetime";
                 MySQLData.SelectCommand = new MySqlCommand(ConnSTR, CtMSQL.ConnectionDataBase());
                 MySQLData.Fill(datatable);
                 SourceBind.DataSource = datatable;
@@ -46,7 +46,9 @@ namespace IS_3_19_DYCHKOVI
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show(dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
+            DateTime date = new DateTime();
+            date = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[2].Value);
+            MessageBox.Show(DateTime.Today.Subtract(date.Date).Days.ToString()+"Прошло дней от рождения");
         }
     }
 }
