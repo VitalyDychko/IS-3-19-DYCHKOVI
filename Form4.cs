@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using GreatLibrary;
 
 namespace IS_3_19_DYCHKOVI
 {
@@ -26,9 +27,9 @@ namespace IS_3_19_DYCHKOVI
             ConnDB conndb = new ConnDB();
             try
             {
-                conndb.ConnectionDataBase().Open();
+                conndb.CMS().Open();
                 string ConnSTR = "SELECT idStud AS 'ID', fioStud AS 'ФИО', drStud AS 'Дата рождения' FROM t_datetime";
-                MySQLData.SelectCommand = new MySqlCommand(ConnSTR, conndb.ConnectionDataBase());
+                MySQLData.SelectCommand = new MySqlCommand(ConnSTR, conndb.CMS());
                 MySQLData.Fill(datatable);
                 SourceBind.DataSource = datatable;
                 dataGridView1.DataSource = SourceBind;
@@ -39,7 +40,7 @@ namespace IS_3_19_DYCHKOVI
             }
             finally
             {
-                conndb.ConnectionDataBase().Close();
+                conndb.CMS().Close();
             }
         }
 

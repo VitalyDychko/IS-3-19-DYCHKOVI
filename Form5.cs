@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using GreatLibrary;
 
 namespace IS_3_19_DYCHKOVI
 {
@@ -20,17 +21,36 @@ namespace IS_3_19_DYCHKOVI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ConnectionToMySQL CtMSQL = new ConnectionToMySQL();
-            CtMSQL.ConnectionDataBase().Open();
-            string CommStr = $"INSERT INTO t_PraktStud (fioStud, datetimeStud) VALUES (@fio,@date)";
-            using (MySqlCommand MSC = new MySqlCommand(CommStr, CtMSQL.ConnectionDataBase()))
+            ConnDB conndb = new ConnDB();
+            if (textBox1.TextLength != 0)
             {
-                MSC.Parameters.Add("@fio", MySqlDbType.VarChar).Value = textBox1.Text;
-                MSC.Parameters.Add("@date", MySqlDbType.DateTime).Value = dateTimePicker1.Text;
-                MSC.Connection.Open();
-                MSC.ExecuteNonQuery();
+                try
+                {
+                    conndb.CMS().Open();
+                    string commandStr = $"INSERT INTO t_PraktStud (fioStud, datetimeStud) VALUES (@fio,@date)";
+                    //использование using, смотрел у github.com/sadus174
+                    using (MySqlCommand cmnd = new MySqlCommand(commandStr, conndb.CMS()))
+                    {
+                        cmnd.Parameters.Add("@fio", MySqlDbType.VarChar).Value = textBox1.Text;
+                        cmnd.Parameters.Add("@date", MySqlDbType.DateTime).Value = dateTimePicker1.Text;
+                        cmnd.Connection.Open();
+                        cmnd.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"{ex}");
+                }
+                finally
+                {
+                    MessageBox.Show("Соединение закрыто.");
+                    conndb.CMS().Close();
+                }
             }
-            CtMSQL.ConnectionDataBase().Close();
+            else
+            {
+                MessageBox.Show("Заполните поле ФИО");
+            }
         }
     }
 }

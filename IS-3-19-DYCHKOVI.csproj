@@ -130,5 +130,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GreatLibrary\GreatLibrary.csproj">
+      <Project>{239c5f13-dc32-4ea6-80ac-2553e0d22423}</Project>
+      <Name>GreatLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
