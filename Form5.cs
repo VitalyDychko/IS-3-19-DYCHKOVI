@@ -28,6 +28,7 @@ namespace IS_3_19_DYCHKOVI
                 {
                     conndb.CMS().Open();
                     string commandStr = $"INSERT INTO t_PraktStud (fioStud, datetimeStud) VALUES (@fio,@date)";
+                    //использование using, смотрел у github.com/sadus174
                     using (MySqlCommand cmnd = new MySqlCommand(commandStr, conndb.CMS()))
                     {
                         cmnd.Parameters.Add("@fio", MySqlDbType.VarChar).Value = textBox1.Text;

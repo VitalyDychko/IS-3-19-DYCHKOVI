@@ -24,7 +24,12 @@ namespace IS_3_19_DYCHKOVI
     {
         public MySqlConnection connDB()
         {
-            string ConnStr = "server=caseum.ru;port=33333;user=test_user;database=db_test;password=test_pass;";
+            string host = "caseum.ru";
+            string port = "33333";
+            string user = "test_user";
+            string db = "db_test";
+            string password = "test_pass";
+            string ConnStr = $"server={host};port={port};user={user};database={db};password={password};";
             MySqlConnection conn = new MySqlConnection(ConnStr);
             return conn;
         }
