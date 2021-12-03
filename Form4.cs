@@ -43,12 +43,11 @@ namespace IS_3_19_DYCHKOVI
                 conndb.CMS().Close();
             }
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DateTime date = new DateTime();
             date = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[2].Value);
-            MessageBox.Show(DateTime.Today.Subtract(date.Date).Days.ToString()+"Прошло дней от рождения");
+            MessageBox.Show(DateTime.Today.Subtract(date.Date).Days.ToString() + " прошло дней от рождения");
         }
     }
 }

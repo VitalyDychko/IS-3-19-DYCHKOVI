@@ -43,8 +43,7 @@ namespace IS_3_19_DYCHKOVI
                 CtMSQL.connDB().Close();
             }
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             MessageBox.Show(dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
         }

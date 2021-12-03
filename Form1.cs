@@ -41,6 +41,9 @@ namespace IS_3_19_DYCHKOVI
                 lb1.Items.Add($"Артикул: {vendor}");
                 lb1.Items.Add($"Цена: {price}");
                 lb1.Items.Add($"Год: {year}");
+                lb1.Items.Add($"Частота: {Freak}");
+                lb1.Items.Add($"Количество ядер: {Kernels}");
+                lb1.Items.Add($"Количество потоков: {Threads}");
                 lb1.Items.Add("#################################");
             }
         }
