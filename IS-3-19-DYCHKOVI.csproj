@@ -34,9 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=8.0.27.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>MySql Connector\MySql.Data.dll</HintPath>
+    <Reference Include="MySql.Data">
+      <HintPath>D:\IS-3-19-DYCHKOVI-master\MySql Connector\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -131,9 +130,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GreatLibrary\GreatLibrary.csproj">
-      <Project>{239c5f13-dc32-4ea6-80ac-2553e0d22423}</Project>
-      <Name>GreatLibrary</Name>
+    <ProjectReference Include="D:\IS-3-19-DYCHKOVI-master\GreatLibrarium\GreatLibrarium.csproj">
+      <Project>{916fa4c9-2a65-4573-a537-b2d6f892ba69}</Project>
+      <Name>GreatLibrarium</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
